@@ -1,0 +1,133 @@
+.header-container{
+    height: 80px;
+    width: 100%;
+    background-color:#1a325d ;
+    color: #fff;
+}
+.navbar-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-container img{
+    height: 70px;
+}
+.navigation-links{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 2rem;
+}
+
+.navigation-link{
+    cursor: pointer;
+}
+.navigation-link:hover{
+    opacity: 0.7;
+    transition: all 0.2s ease-in;
+}
+
+.navigation-link:nth-child(4),
+.navigation-link:nth-child(5)
+
+{
+    font-weight: 500;
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 20px;
+
+}
+
+.navigation-link:nth-child(4):hover,
+.navigation-link:nth-child(5):hover
+
+{
+    font-weight: 500;
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 20px;
+color: #1a325d;
+background-color: #fff ;
+transition: all 0.2s ease-in;
+opacity: 1;
+}
+
+.footer-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #000000a5;
+}
+
+.footer-container .footer-row img{
+    height: 60px;
+}
+
+.footer-row:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-row:nth-child(1) ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    list-style-type: none;
+}
+.footer-row:nth-child(2) {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: #00000053;
+}
+
+
+.about-container{
+    margin: 100px 0px
+}
+
+.accordian {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.accordian .item{
+    margin-bottom: 20px ;
+    cursor: pointer;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.232);
+}
+.accordian .item:nth-child(1){
+    padding-top: 10px;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.232);
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  text-align: left;
+}
+
+.question .title {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.question span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.answer {
+  text-align: left;
+  font-size: 14px;
+  width: 95%;
+}
