@@ -7,11 +7,13 @@ import { LightPurpleButton } from "../components/buttonStyles";
 import Navbar from "../components/landingpage/Navbar";
 import Footer from "../components/landingpage/Footer";
 import About from "../components/landingpage/About";
+import HeroBanner from "../components/landingpage/HeroBanner";
 
 const Homepage = () => {
   return (
     <>
       <Navbar />
+      <HeroBanner/>
       <About />
       <Footer />
     </>
