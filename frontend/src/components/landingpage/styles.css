@@ -85,6 +85,34 @@ opacity: 1;
     font-size: 18px;
 }
 
+.heroBanner-logins{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.heroBanner-logins button{
+    border: 0;
+    outline: 0;
+    padding: 10px 40px;
+    font-size: 16px;
+    border-radius: 16px;
+    font-weight: 500;
+    background-color: #1a325d;
+    color: #fff;
+    cursor: pointer;
+}
+
+.heroBanner-logins p {
+    color: #1a325d;
+}
+
+.heroBanner-logins p a {
+    color: #FFC907;
+}
 
 .footer-container{
     max-width: 1200px;
