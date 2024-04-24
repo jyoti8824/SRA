@@ -25,11 +25,6 @@ function Navbar() {
                         </Link>
 
                     </li>
-                    <li className="navigation-link">
-                        <Link to="/Adminregister" >
-                            Sign up
-                        </Link>
-                    </li>
 
                 </ul>
             </nav>
