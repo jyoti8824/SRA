@@ -1,12 +1,12 @@
 import React from "react";
-import heroBannerImg from "../../assets/heroBanner.png";
+import heroBannerImg from "../../assets/students.svg";
 
 function HeroBanner() {
   return (
     <section className='heroBanner-container'>
       <div className='heroBanner-wrapper'>
         <div className='heroBanner-left'>
-          <img src={heroBannerImg} />
+          <img src={ heroBannerImg } />
         </div>
         <div className='heroBanner-right'>
           <h1>
