@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress, Backdrop } from '@mui/material';
+import { Button, Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress, Backdrop, Modal } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff, WidthFull } from '@mui/icons-material';
 import bgpic from "../assets/designlogin.jpg"
 import { LightPurpleButton } from '../components/buttonStyles';
 import styled from 'styled-components';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
+import Img from "../assets/Herobanner1.png"
 
 const defaultTheme = createTheme();
 
@@ -123,9 +124,9 @@ const LoginPage = ({ role }) => {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
+            <Grid  sx={{ height: '100vh'}} >
                 <CssBaseline />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                <Grid item xs={12} sm={8} md={5}  elevation={6} square>
                     <Box
                         sx={{
                             my: 8,
@@ -226,20 +227,13 @@ const LoginPage = ({ role }) => {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3 }}
+                                sx={{ mt: 3, mb: 3 }}
                             >
                                 {loader ?
                                     <CircularProgress size={24} color="inherit" />
                                     : "Login"}
                             </LightPurpleButton>
-                            <Button
-                                fullWidth
-                                onClick={guestModeHandler}
-                                variant="outlined"
-                                sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
-                            >
-                                Login as Guest
-                            </Button>
+           
                             {role === "Admin" &&
                                 <Grid container>
                                     <Grid>
@@ -255,20 +249,24 @@ const LoginPage = ({ role }) => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid
+                {/* <div style={{ margin: "170px auto 0 auto"}}>
+                    <img src={Img} style={{width: "600px"}} />
+                </div> */}
+                {/* <Grid
                     item
                     xs={false}
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: `url(${bgpic})`,
+                        backgroundImage: `url(${Img})`,
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
+                        backgroundSize: 'cover', // This ensures the image maintains its aspect ratio
                         backgroundPosition: 'center',
+                        width: '50%', // Set the width to 100% to fill the container
                     }}
-                />
+                /> */}
             </Grid>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -287,5 +285,5 @@ export default LoginPage
 const StyledLink = styled(Link)`
   margin-top: 9px;
   text-decoration: none;
-  color: #7f56da;
+  color: #1a325d;
 `;

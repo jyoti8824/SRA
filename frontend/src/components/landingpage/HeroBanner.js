@@ -1,8 +1,10 @@
 import React from "react";
 import heroBannerImg from "../../assets/Herobanner1.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HeroBanner() {
+  const navigate = useNavigate()
+
   return (
     <section className='heroBanner-container'>
       <div className='heroBanner-wrapper'>
@@ -21,8 +23,8 @@ function HeroBanner() {
           </p>
 
           <div className='heroBanner-logins'>
-            <button>
-              <Link to='/choose'>Login</Link>
+            <button onClick={()=>navigate("/choose")}>
+              Login
             </button>
 
             <p>
