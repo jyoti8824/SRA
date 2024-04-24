@@ -30,7 +30,7 @@ function AboutCard() {
         </span>
         <p>Security and confidentiality</p>
         <p>99%</p>
-        <p>protected from unauthorized access.</p>
+        <p>Secured and protected from unauthorized access.</p>
       </div>
     </div>
   );
