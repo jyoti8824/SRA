@@ -1,27 +1,36 @@
 import React from "react";
-import "./styles.css"
+import "./styles.css";
 import { AiFillAccountBook } from "react-icons/ai";
+import { MdOutlineSecurity } from "react-icons/md";
+import { PiStudentDuotone } from "react-icons/pi";
+import { MdOutlinePeopleAlt } from "react-icons/md";
 
 function AboutCard() {
   return (
     <div className='about-container-card'>
       <div className='about-card'>
-        <span><AiFillAccountBook/></span>
-        <p>Traffic growth went up to</p>
-        <p>600%</p>
-        <p>in one year using Whatsapp</p>
+        <span>
+          <PiStudentDuotone />
+        </span>
+        <p>Seamless Students Engagement</p>
+        <p>95.12%</p>
+        <p>Engage with students in a more personal and direct manner.</p>
       </div>
       <div className='about-card'>
-      <span><AiFillAccountBook/></span>
-        <p>Customer satisfaction rate reaches</p>
-        <p>98.9%</p>
-        <p>with 100% resolution within 48 hours</p>
+        <span>
+          <MdOutlinePeopleAlt />
+        </span>
+        <p>Fostering Student-Teacher Communication</p>
+        <p>95.22%</p>
+        <p>For supporting a student's academic journey.</p>
       </div>
       <div className='about-card'>
-      <span><AiFillAccountBook/></span>
-        <p>Managing requests via Whatsapp</p>
-        <p>10x</p>
-        <p>more than before</p>
+        <span>
+          <MdOutlineSecurity />
+        </span>
+        <p>Security and confidentiality</p>
+        <p>99%</p>
+        <p>protected from unauthorized access.</p>
       </div>
     </div>
   );
