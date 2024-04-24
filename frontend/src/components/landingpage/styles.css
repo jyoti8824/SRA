@@ -107,6 +107,11 @@ opacity: 1;
     cursor: pointer;
 }
 
+
+.heroBanner-logins button a{
+    width: 100%;
+}
+
 .heroBanner-logins p {
     color: #1a325d;
 }
