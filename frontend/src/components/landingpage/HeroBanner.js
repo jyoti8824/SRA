@@ -1,5 +1,5 @@
 import React from "react";
-import heroBannerImg from "../../assets/students.svg";
+import heroBannerImg from "../../assets/Herobanner1.png";
 import { Link } from "react-router-dom";
 
 function HeroBanner() {
@@ -7,7 +7,7 @@ function HeroBanner() {
     <section className='heroBanner-container'>
       <div className='heroBanner-wrapper'>
         <div className='heroBanner-left'>
-          <img src={heroBannerImg} />
+          <img src={ heroBannerImg } />
         </div>
         <div className='heroBanner-right'>
           <h1>
