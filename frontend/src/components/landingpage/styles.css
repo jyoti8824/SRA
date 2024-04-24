@@ -3,6 +3,8 @@
     width: 100%;
     background-color:#1a325d ;
     color: #fff;
+    position: fixed;
+    top: 0;
 }
 .navbar-container{
     max-width: 1200px;
@@ -55,8 +57,37 @@ transition: all 0.2s ease-in;
 opacity: 1;
 }
 
+
+.heroBanner-container{
+    max-width: 1200px;
+    width: 95%;
+    margin: calc(80px + 100px) auto auto auto;
+}
+
+.heroBanner-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 3rem;
+}
+
+.heroBanner-right h1{
+    color: #1a325d;
+    font-size: 50px;
+}
+.heroBanner-right h1 span{
+    color: #FFC907;
+}
+.heroBanner-right p{
+    color: #1a325d;
+    font-size: 18px;
+}
+
+
 .footer-container{
     max-width: 1200px;
+    width: 95%;
     margin: 0 auto;
     color: #000000a5;
 }
@@ -79,13 +110,12 @@ opacity: 1;
     list-style-type: none;
 }
 .footer-row:nth-child(2) {
-    margin-top: 20px;
+    margin-bottom: 10px;
     text-align: center;
     font-weight: 400;
     font-size: 14px;
-    color: #00000053;
+    color: #00000062;
 }
-
 
 .about-container{
     margin: 100px 0px
@@ -103,6 +133,7 @@ opacity: 1;
     padding-bottom: 10px;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.232);
 }
+
 .accordian .item:nth-child(1){
     padding-top: 10px;
     border-top: 0.5px solid rgba(0, 0, 0, 0.232);
@@ -130,4 +161,5 @@ opacity: 1;
   text-align: left;
   font-size: 14px;
   width: 95%;
+  margin-top: 12px;
 }
