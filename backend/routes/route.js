@@ -25,7 +25,7 @@ const {
 const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, deleteSubject, freeSubjectList, allSubjects, deleteSubjects } = require( '../controllers/subject-controller.js' );
 const { teacherRegister, teacherLogIn, getTeachers, getTeacherDetail, deleteTeachers, deleteTeachersByClass, deleteTeacher, updateTeacherSubject, teacherAttendance } = require( '../controllers/teacher-controller.js' );
 
-const { courseCreate, getCourse } = require( '../controllers/course-controller.js' );
+const { courseCreate, getCourse, getallCourse } = require( '../controllers/course-controller.js' );
 // Admin
 router.post( '/AdminReg', adminRegister );
 router.post( '/AdminLogin', adminLogIn );
@@ -87,6 +87,7 @@ router.delete( "/Notice/:id", deleteNotice );
 router.put( "/Notice/:id", updateNotice );
 
 router.post( '/Addcourse', courseCreate );
+router.get( '/allcourses', getallCourse );
 router.get( '/Getcourse', getCourse );
 
 // Complain

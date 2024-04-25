@@ -3,14 +3,22 @@ const Student = require( '../models/studentSchema.js' );
 
 const courseCreate = async ( req, res ) => {
     try {
-        const course = new Course( {
-            ...req.body,
-            school: req.body.adminID
-        } );
-        const result = await course.save();
-        res.send( result );
-    } catch ( err ) {
-        res.status( 500 ).json( err );
+        const course = new Course( req.body );
+        await course.save();
+        res.status( 201 ).send( course );
+    } catch ( error ) {
+        res.status( 400 ).send( error );
+    }
+};
+
+const getallCourse = async ( req, res ) => {
+    try {
+        // Query the database to fetch all courses
+        const courses = await Course.find();
+        res.json( courses ); // Return the fetched courses as JSON response
+    } catch ( error ) {
+        console.error( error );
+        res.status( 500 ).json( { message: 'Internal Server Error' } );
     }
 };
 
@@ -50,4 +58,5 @@ const getCourse = async ( req, res ) => {
 };
 
 
-module.exports = { courseCreate, getCourse };
+
+module.exports = { courseCreate, getCourse, getallCourse };

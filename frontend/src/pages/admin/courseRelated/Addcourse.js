@@ -1,45 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addStuff } from '../../../redux/userRelated/userHandle';
-import { underControl } from '../../../redux/userRelated/userSlice';
 import { CircularProgress } from '@mui/material';
 import Popup from '../../../components/Popup';
+import axios from 'axios';
 
 const AddCourse = () => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { status, response, error } = useSelector( state => state.user );
-    const { currentUser } = useSelector( state => state.user );
 
     const [ coursetitle, setCourseTitle ] = useState( '' );
     const [ coursedetails, setCourseDetails ] = useState( '' );
     const [ price, setPrice ] = useState( '' );
-    const adminID = currentUser._id;
-
     const [ loader, setLoader ] = useState( false );
     const [ showPopup, setShowPopup ] = useState( false );
     const [ message, setMessage ] = useState( "" );
 
-    const fields = { coursetitle, coursedetails, price, adminID };
-    const address = "Course";
-
-    const submitHandler = ( event ) => {
+    const submitHandler = async ( event ) => {
         event.preventDefault();
         setLoader( true );
-        dispatch( addStuff( fields, address ) );
-    };
 
-    useEffect( () => {
-        if ( status === 'added' ) {
-            navigate( '/Admin/addcourse' );
-            dispatch( underControl() );
-        } else if ( status === 'error' ) {
-            setMessage( "Network Error" );
-            setShowPopup( true );
+        try {
+            const response = await axios.post( "http://localhost:5000/addcourse", {
+                coursetitle,
+                coursedetails,
+                price
+            } );
+
+            if ( response.status === 200 ) {
+                // Handle successful response, e.g., redirect
+                navigate( '/Admin/addcourse' );
+                setCourseTitle( '' );
+                setCourseDetails( '' );
+                setPrice( '' );
+            } else {
+                throw new Error( 'Network Error' );
+            }
+        } catch ( error ) {
+            // Handle error
             setLoader( false );
         }
-    }, [ status, navigate, error, response, dispatch ] );
+    };
 
     return (
         <>
@@ -59,7 +58,7 @@ const AddCourse = () => {
                         required />
 
                     <label>Price</label>
-                    <input className="registerInput" type="number" placeholder="Enter Price..."
+                    <input className="registerInput" type="number" placeholder="Enter course Price..."
                         value={ price }
                         onChange={ ( event ) => setPrice( event.target.value ) }
                         required />
