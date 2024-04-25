@@ -66,7 +66,7 @@ const StudentSubjects = () => {
   }, [userDetails]);
 
   useEffect(() => {
-    if (subjectMarks === []) {
+    if (!subjectMarks) {
       dispatch(getSubjectList(currentUser.sclassName._id, "ClassSubjects"));
     }
   }, [subjectMarks, dispatch, currentUser.sclassName._id]);
@@ -104,7 +104,7 @@ const StudentSubjects = () => {
             })}
              <StyledTableRow>
               <StyledTableCell>Percentage</StyledTableCell>
-              <StyledTableCell>{(totalMarksObtained/maximumMarks) * 100}%</StyledTableCell>
+              <StyledTableCell>{((totalMarksObtained/maximumMarks) * 100).toFixed(2)}%</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>

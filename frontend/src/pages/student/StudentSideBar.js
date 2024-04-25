@@ -16,25 +16,46 @@ const StudentSideBar = () => {
             <React.Fragment>
                 <ListItemButton component={Link} to="/">
                     <ListItemIcon>
-                        <HomeIcon color={location.pathname === ("/" || "/Student/dashboard") ? 'primary' : 'inherit'} />
+                        <HomeIcon     sx={{
+                color:
+                  location.pathname === "/" ||
+                  location.pathname === "/Student/dashboard"
+                    ? "#cfa406"
+                    : "inherit",
+              }} />
                     </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Student/subjects">
                     <ListItemIcon>
-                        <AssignmentIcon color={location.pathname.startsWith("/Student/subjects") ? 'primary' : 'inherit'} />
+                        <AssignmentIcon    sx={{ color:
+                  location.pathname === "/subjects" ||
+                  location.pathname === "/Student/subjects"
+                    ? "#cfa406"
+                    : "inherit",
+              }}  />
                     </ListItemIcon>
                     <ListItemText primary="Report" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Student/attendance">
                     <ListItemIcon>
-                        <ClassOutlinedIcon color={location.pathname.startsWith("/Student/attendance") ? 'primary' : 'inherit'} />
+                        <ClassOutlinedIcon  sx={{ color:
+                  location.pathname === "/attendance" ||
+                  location.pathname === "/Student/attendance"
+                    ? "#cfa406"
+                    : "inherit",
+              }}  />
                     </ListItemIcon>
                     <ListItemText primary="Attendance" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/Student/complain">
                     <ListItemIcon>
-                        <AnnouncementOutlinedIcon color={location.pathname.startsWith("/Student/complain") ? 'primary' : 'inherit'} />
+                        <AnnouncementOutlinedIcon sx={{ color:
+                  location.pathname === "/complain" ||
+                  location.pathname === "/Student/complain"
+                    ? "#cfa406"
+                    : "inherit",
+              }} />
                     </ListItemIcon>
                     <ListItemText primary="Complain" />
                 </ListItemButton>
@@ -46,13 +67,23 @@ const StudentSideBar = () => {
                 </ListSubheader>
                 <ListItemButton component={Link} to="/Student/profile">
                     <ListItemIcon>
-                        <AccountCircleOutlinedIcon color={location.pathname.startsWith("/Student/profile") ? 'primary' : 'inherit'} />
+                        <AccountCircleOutlinedIcon sx={{ color:
+                  location.pathname === "/profile" ||
+                  location.pathname === "/Student/profile"
+                    ? "#cfa406"
+                    : "inherit",
+              }} />
                     </ListItemIcon>
                     <ListItemText primary="Profile" />
                 </ListItemButton>
                 <ListItemButton component={Link} to="/logout">
                     <ListItemIcon>
-                        <ExitToAppIcon color={location.pathname.startsWith("/logout") ? 'primary' : 'inherit'} />
+                        <ExitToAppIcon sx={{ color:
+                  location.pathname === "/logout" ||
+                  location.pathname === "/Student/logout"
+                    ? "#cfa406"
+                    : "inherit",
+              }}  />
                     </ListItemIcon>
                     <ListItemText primary="Logout" />
                 </ListItemButton>
