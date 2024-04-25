@@ -124,10 +124,11 @@ const LoginPage = ({ role }) => {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Grid  sx={{ height: '100vh'}} >
+            <Grid container justifyContent="center" alignItems="center"  sx={{ height: '100vh'}} >
                 <CssBaseline />
                 <Grid item xs={12} sm={8} md={5}  elevation={6} square>
-                    <Box
+                <Paper elevation={6} sx={{ boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px', borderRadius: '10px', p: 4 }}> 
+                <Box
                         sx={{
                             my: 8,
                             mx: 4,
@@ -248,25 +249,11 @@ const LoginPage = ({ role }) => {
                             }
                         </Box>
                     </Box>
+                
+                    </Paper>
+                    
                 </Grid>
-                {/* <div style={{ margin: "170px auto 0 auto"}}>
-                    <img src={Img} style={{width: "600px"}} />
-                </div> */}
-                {/* <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: `url(${Img})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover', // This ensures the image maintains its aspect ratio
-                        backgroundPosition: 'center',
-                        width: '50%', // Set the width to 100% to fill the container
-                    }}
-                /> */}
+
             </Grid>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
