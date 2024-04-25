@@ -14,82 +14,87 @@ const StudentSideBar = () => {
     return (
         <>
             <React.Fragment>
-                <ListItemButton component={Link} to="/">
+                <ListItemButton component={ Link } to="/">
                     <ListItemIcon>
-                        <HomeIcon     sx={{
-                color:
-                  location.pathname === "/" ||
-                  location.pathname === "/Student/dashboard"
-                    ? "#cfa406"
-                    : "inherit",
-              }} />
+                        <HomeIcon sx={ {
+                            color:
+                                location.pathname === "/" ||
+                                    location.pathname === "/Student/dashboard"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
                     </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/Student/subjects">
+                <ListItemButton component={ Link } to="/Student/subjects">
                     <ListItemIcon>
-                        <AssignmentIcon    sx={{ color:
-                  location.pathname === "/subjects" ||
-                  location.pathname === "/Student/subjects"
-                    ? "#cfa406"
-                    : "inherit",
-              }}  />
+                        <AssignmentIcon sx={ {
+                            color:
+                                location.pathname === "/subjects" ||
+                                    location.pathname === "/Student/subjects"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
                     </ListItemIcon>
-                    <ListItemText primary="Report" />
+                    <ListItemText primary="Grade Card" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/Student/attendance">
+                <ListItemButton component={ Link } to="/Student/attendance">
                     <ListItemIcon>
-                        <ClassOutlinedIcon  sx={{ color:
-                  location.pathname === "/attendance" ||
-                  location.pathname === "/Student/attendance"
-                    ? "#cfa406"
-                    : "inherit",
-              }}  />
+                        <ClassOutlinedIcon sx={ {
+                            color:
+                                location.pathname === "/attendance" ||
+                                    location.pathname === "/Student/attendance"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
                     </ListItemIcon>
                     <ListItemText primary="Attendance" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/Student/complain">
+                <ListItemButton component={ Link } to="/Student/complain">
                     <ListItemIcon>
-                        <AnnouncementOutlinedIcon sx={{ color:
-                  location.pathname === "/complain" ||
-                  location.pathname === "/Student/complain"
-                    ? "#cfa406"
-                    : "inherit",
-              }} />
+                        <AnnouncementOutlinedIcon sx={ {
+                            color:
+                                location.pathname === "/complain" ||
+                                    location.pathname === "/Student/complain"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
                     </ListItemIcon>
                     <ListItemText primary="Complain" />
                 </ListItemButton>
             </React.Fragment>
-            <Divider sx={{ my: 1 }} />
+            <Divider sx={ { my: 1 } } />
             <React.Fragment>
                 <ListSubheader component="div" inset>
                     User
                 </ListSubheader>
-                <ListItemButton component={Link} to="/Student/profile">
+                <ListItemButton component={ Link } to="/Student/profile">
                     <ListItemIcon>
-                        <AccountCircleOutlinedIcon sx={{ color:
-                  location.pathname === "/profile" ||
-                  location.pathname === "/Student/profile"
-                    ? "#cfa406"
-                    : "inherit",
-              }} />
+                        <AccountCircleOutlinedIcon sx={ {
+                            color:
+                                location.pathname === "/profile" ||
+                                    location.pathname === "/Student/profile"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
                     </ListItemIcon>
                     <ListItemText primary="Profile" />
                 </ListItemButton>
-                <ListItemButton component={Link} to="/logout">
+                <ListItemButton component={ Link } to="/logout">
                     <ListItemIcon>
-                        <ExitToAppIcon sx={{ color:
-                  location.pathname === "/logout" ||
-                  location.pathname === "/Student/logout"
-                    ? "#cfa406"
-                    : "inherit",
-              }}  />
+                        <ExitToAppIcon sx={ {
+                            color:
+                                location.pathname === "/logout" ||
+                                    location.pathname === "/Student/logout"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
                     </ListItemIcon>
                     <ListItemText primary="Logout" />
                 </ListItemButton>
             </React.Fragment>
         </>
-    )
-}
+    );
+};
 
-export default StudentSideBar
+export default StudentSideBar;

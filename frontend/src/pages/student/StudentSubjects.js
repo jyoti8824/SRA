@@ -22,64 +22,64 @@ import { StyledTableCell, StyledTableRow } from "../../components/styles";
 
 const StudentSubjects = () => {
   const dispatch = useDispatch();
-  const { subjectsList, sclassDetails } = useSelector((state) => state.sclass);
+  const { subjectsList, sclassDetails } = useSelector( ( state ) => state.sclass );
   const { userDetails, currentUser, loading, response, error } = useSelector(
-    (state) => state.user
+    ( state ) => state.user
   );
-  const [maximumMarks, setMaximumMarks] = useState(0);
-  const [totalMarksObtained, setTotalMarksObtained] = useState(0);
+  const [ maximumMarks, setMaximumMarks ] = useState( 0 );
+  const [ totalMarksObtained, setTotalMarksObtained ] = useState( 0 );
 
-  useEffect(() => {
-    if (userDetails.examResult) {
+  useEffect( () => {
+    if ( userDetails.examResult ) {
       var maxMarks;
-      for (let i = 1; i < userDetails.examResult.length + 1; i++) {
+      for ( let i = 1; i < userDetails.examResult.length + 1; i++ ) {
         maxMarks = i * 100;
       }
-      setMaximumMarks(maxMarks);
+      setMaximumMarks( maxMarks );
     }
 
-    const totalMarks = userDetails?.examResult?.reduce((acc, val) => {
+    const totalMarks = userDetails?.examResult?.reduce( ( acc, val ) => {
       return acc + val.marksObtained;
-    }, 0);
-    setTotalMarksObtained(totalMarks);
-  }, [userDetails.examResult]);
+    }, 0 );
+    setTotalMarksObtained( totalMarks );
+  }, [ userDetails.examResult ] );
 
-  console.log(maximumMarks);
+  console.log( maximumMarks );
 
-  useEffect(() => {
-    dispatch(getUserDetails(currentUser._id, "Student"));
-  }, [dispatch, currentUser._id]);
+  useEffect( () => {
+    dispatch( getUserDetails( currentUser._id, "Student" ) );
+  }, [ dispatch, currentUser._id ] );
 
-  if (response) {
-    console.log(response);
-  } else if (error) {
-    console.log(error);
+  if ( response ) {
+    console.log( response );
+  } else if ( error ) {
+    console.log( error );
   }
 
-  const [subjectMarks, setSubjectMarks] = useState([]);
-  const [selectedSection, setSelectedSection] = useState("table");
+  const [ subjectMarks, setSubjectMarks ] = useState( [] );
+  const [ selectedSection, setSelectedSection ] = useState( "table" );
 
-  useEffect(() => {
-    if (userDetails) {
-      setSubjectMarks(userDetails.examResult || []);
+  useEffect( () => {
+    if ( userDetails ) {
+      setSubjectMarks( userDetails.examResult || [] );
     }
-  }, [userDetails]);
+  }, [ userDetails ] );
 
-  useEffect(() => {
-    if (!subjectMarks) {
-      dispatch(getSubjectList(currentUser.sclassName._id, "ClassSubjects"));
+  useEffect( () => {
+    if ( !subjectMarks ) {
+      dispatch( getSubjectList( currentUser.sclassName._id, "ClassSubjects" ) );
     }
-  }, [subjectMarks, dispatch, currentUser.sclassName._id]);
+  }, [ subjectMarks, dispatch, currentUser.sclassName._id ] );
 
-  const handleSectionChange = (event, newSection) => {
-    setSelectedSection(newSection);
+  const handleSectionChange = ( event, newSection ) => {
+    setSelectedSection( newSection );
   };
 
   const renderTableSection = () => {
     return (
       <>
         <Typography variant='h4' align='center' gutterBottom>
-          Subject Marks
+          Grade Card
         </Typography>
         <Table>
           <TableHead>
@@ -89,22 +89,22 @@ const StudentSubjects = () => {
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {subjectMarks.map((result, index) => {
-              if (!result.subName || !result.marksObtained) {
+            { subjectMarks.map( ( result, index ) => {
+              if ( !result.subName || !result.marksObtained ) {
                 return null;
               }
               return (
                 <>
-                  <StyledTableRow key={index}>
-                    <StyledTableCell>{result.subName.subName}</StyledTableCell>
-                    <StyledTableCell>{result.marksObtained} out of 100</StyledTableCell>
+                  <StyledTableRow key={ index }>
+                    <StyledTableCell>{ result.subName.subName }</StyledTableCell>
+                    <StyledTableCell>{ result.marksObtained } out of 100</StyledTableCell>
                   </StyledTableRow>
                 </>
               );
-            })}
-             <StyledTableRow>
+            } ) }
+            <StyledTableRow>
               <StyledTableCell>Percentage</StyledTableCell>
-              <StyledTableCell>{((totalMarksObtained/maximumMarks) * 100).toFixed(2)}%</StyledTableCell>
+              <StyledTableCell>{ ( ( totalMarksObtained / maximumMarks ) * 100 ).toFixed( 2 ) }%</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>
@@ -113,7 +113,7 @@ const StudentSubjects = () => {
   };
 
   const renderChartSection = () => {
-    return <CustomBarChart chartData={subjectMarks} dataKey='marksObtained' />;
+    return <CustomBarChart chartData={ subjectMarks } dataKey='marksObtained' />;
   };
 
   const renderClassDetailsSection = () => {
@@ -123,43 +123,43 @@ const StudentSubjects = () => {
           Class Details
         </Typography>
         <Typography variant='h5' gutterBottom>
-          You are currently in Class {sclassDetails && sclassDetails.sclassName}
+          You are currently in Class { sclassDetails && sclassDetails.sclassName }
         </Typography>
         <Typography variant='h6' gutterBottom>
           And these are the subjects:
         </Typography>
-        {subjectsList &&
-          subjectsList.map((subject, index) => (
-            <div key={index}>
+        { subjectsList &&
+          subjectsList.map( ( subject, index ) => (
+            <div key={ index }>
               <Typography variant='subtitle1'>
-                {subject.subName} ({subject.subCode})
+                { subject.subName } ({ subject.subCode })
               </Typography>
             </div>
-          ))}
+          ) ) }
       </Container>
     );
   };
 
   return (
     <>
-      {loading ? (
+      { loading ? (
         <div>Loading...</div>
       ) : (
         <div>
-          {subjectMarks &&
-          Array.isArray(subjectMarks) &&
-          subjectMarks.length > 0 ? (
+          { subjectMarks &&
+            Array.isArray( subjectMarks ) &&
+            subjectMarks.length > 0 ? (
             <>
-              {selectedSection === "table" && renderTableSection()}
-              {selectedSection === "chart" && renderChartSection()}
+              { selectedSection === "table" && renderTableSection() }
+              { selectedSection === "chart" && renderChartSection() }
 
               <Paper
-                sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-                elevation={3}
+                sx={ { position: "fixed", bottom: 0, left: 0, right: 0 } }
+                elevation={ 3 }
               >
                 <BottomNavigation
-                  value={selectedSection}
-                  onChange={handleSectionChange}
+                  value={ selectedSection }
+                  onChange={ handleSectionChange }
                   showLabels
                 >
                   <BottomNavigationAction
@@ -177,10 +177,10 @@ const StudentSubjects = () => {
               </Paper>
             </>
           ) : (
-            <>{renderClassDetailsSection()}</>
-          )}
+            <>{ renderClassDetailsSection() }</>
+          ) }
         </div>
-      )}
+      ) }
     </>
   );
 };
