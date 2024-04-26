@@ -5,10 +5,7 @@ const subjectSchema = new mongoose.Schema( {
         type: String,
         required: true,
     },
-    subId: {
-        type: String,
-        required: true,
-    },
+
     subCode: {
         type: String,
         required: true,
