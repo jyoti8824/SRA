@@ -50,6 +50,18 @@ const StudentSideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Attendance" />
                 </ListItemButton>
+                <ListItemButton component={ Link } to="/Student/getcourse">
+                    <ListItemIcon>
+                        <ClassOutlinedIcon sx={ {
+                            color:
+                                location.pathname === "/getcourse" ||
+                                    location.pathname === "/Student/getcourse"
+                                    ? "#cfa406"
+                                    : "inherit",
+                        } } />
+                    </ListItemIcon>
+                    <ListItemText primary="Courses" />
+                </ListItemButton>
                 {/* <ListItemButton component={ Link } to="/Student/complain">
                     <ListItemIcon>
                         <AnnouncementOutlinedIcon sx={ {

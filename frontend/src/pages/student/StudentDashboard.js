@@ -17,31 +17,32 @@ import StudentProfile from './StudentProfile';
 import StudentSubjects from './StudentSubjects';
 import ViewStdAttendance from './ViewStdAttendance';
 import StudentComplain from './StudentComplain';
-import Logout from '../Logout'
+import Logout from '../Logout';
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
+import StudentCourse from './StudentCourse';
 
 const StudentDashboard = () => {
-    const [open, setOpen] = useState(true);
+    const [ open, setOpen ] = useState( true );
     const toggleDrawer = () => {
-        setOpen(!open);
+        setOpen( !open );
     };
 
     return (
         <>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={ { display: 'flex' } }>
                 <CssBaseline />
-                <AppBar open={open} position='absolute'>
-                    <Toolbar sx={{ pr: '24px',backgroundColor: '#1a325d' }} >
+                <AppBar open={ open } position='absolute'>
+                    <Toolbar sx={ { pr: '24px', backgroundColor: '#1a325d' } } >
                         <IconButton
                             edge="start"
                             color="inherit"
                             aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
+                            onClick={ toggleDrawer }
+                            sx={ {
                                 marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
+                                ...( open && { display: 'none' } ),
+                            } }
                         >
                             <MenuIcon />
                         </IconButton>
@@ -50,16 +51,16 @@ const StudentDashboard = () => {
                             variant="h6"
                             color="inherit"
                             noWrap
-                            sx={{ flexGrow: 1 }}
+                            sx={ { flexGrow: 1 } }
                         >
                             Student Dashboard
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open} sx={open ? styles.drawerStyled : styles.hideDrawer}>
-                    <Toolbar sx={styles.toolBarStyled}>
-                        <IconButton onClick={toggleDrawer}>
+                <Drawer variant="permanent" open={ open } sx={ open ? styles.drawerStyled : styles.hideDrawer }>
+                    <Toolbar sx={ styles.toolBarStyled }>
+                        <IconButton onClick={ toggleDrawer }>
                             <ChevronLeftIcon />
                         </IconButton>
                     </Toolbar>
@@ -68,34 +69,34 @@ const StudentDashboard = () => {
                         <StudentSideBar />
                     </List>
                 </Drawer>
-                <Box component="main" sx={styles.boxStyled}>
+                <Box component="main" sx={ styles.boxStyled }>
                     <Toolbar />
                     <Routes>
-                        <Route path="/" element={<StudentHomePage />} />
-                        <Route path='*' element={<Navigate to="/" />} />
-                        <Route path="/Student/dashboard" element={<StudentHomePage />} />
-                        <Route path="/Student/profile" element={<StudentProfile />} />
+                        <Route path="/" element={ <StudentHomePage /> } />
+                        <Route path='*' element={ <Navigate to="/" /> } />
+                        <Route path="/Student/dashboard" element={ <StudentHomePage /> } />
+                        <Route path="/Student/profile" element={ <StudentProfile /> } />
+                        <Route path="/Student/getcourse" element={ <StudentCourse /> } />
+                        <Route path="/Student/subjects" element={ <StudentSubjects /> } />
+                        <Route path="/Student/attendance" element={ <ViewStdAttendance /> } />
+                        <Route path="/Student/complain" element={ <StudentComplain /> } />
 
-                        <Route path="/Student/subjects" element={<StudentSubjects />} />
-                        <Route path="/Student/attendance" element={<ViewStdAttendance />} />
-                        <Route path="/Student/complain" element={<StudentComplain />} />
-
-                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/logout" element={ <Logout /> } />
                     </Routes>
                 </Box>
             </Box>
         </>
     );
-}
+};
 
-export default StudentDashboard
+export default StudentDashboard;
 
 const styles = {
     boxStyled: {
-        backgroundColor: (theme) =>
+        backgroundColor: ( theme ) =>
             theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+                ? theme.palette.grey[ 100 ]
+                : theme.palette.grey[ 900 ],
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
@@ -104,7 +105,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        px: [1],
+        px: [ 1 ],
     },
     drawerStyled: {
         display: "flex"
@@ -115,4 +116,4 @@ const styles = {
             display: 'none',
         },
     },
-}
+};

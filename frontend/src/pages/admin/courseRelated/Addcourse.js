@@ -10,6 +10,7 @@ const AddCourse = () => {
     const [ coursetitle, setCourseTitle ] = useState( '' );
     const [ coursedetails, setCourseDetails ] = useState( '' );
     const [ price, setPrice ] = useState( '' );
+    const [ percentage, setPercentage ] = useState( '' );
     const [ loader, setLoader ] = useState( false );
     const [ showPopup, setShowPopup ] = useState( false );
     const [ message, setMessage ] = useState( "" );
@@ -22,7 +23,8 @@ const AddCourse = () => {
             const response = await axios.post( "http://localhost:5000/addcourse", {
                 coursetitle,
                 coursedetails,
-                price
+                price,
+                percentage
             } );
 
             if ( response.status === 200 ) {
@@ -61,6 +63,11 @@ const AddCourse = () => {
                     <input className="registerInput" type="number" placeholder="Enter course Price..."
                         value={ price }
                         onChange={ ( event ) => setPrice( event.target.value ) }
+                        required />
+                    <label>Percentage</label>
+                    <input className="registerInput" type="number" placeholder="Enter Percentage..."
+                        value={ percentage }
+                        onChange={ ( event ) => setPercentage( event.target.value ) }
                         required />
 
                     <button className="registerButton" type="submit" disabled={ loader }>
