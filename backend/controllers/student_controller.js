@@ -52,43 +52,20 @@ const Course = require( '../models/courseSchema.js' );
 const getCourseAccordingMarks = async ( req, res ) => {
     try {
         const studentId = req.params.studentId;
-        const student = await Student.findById( studentId ).select( 'examResult school' ).lean();
-
+        const student = await Student.findById( studentId ).select( 'examResult' ).lean();
         if ( !student ) {
             return res.status( 404 ).json( { message: "Student not found" } );
         }
-
         const coursesToDisplay = [];
-        const { examResult, school } = student;
-
-        // Iterate through each exam result
+        const { examResult } = student;
         for ( const result of examResult ) {
-            const subjectId = result.subName; // Assuming `subName` holds the subject ID
-
-            // Check if marks obtained are below 40 for this subject
             if ( result.marksObtained < 40 ) {
                 console.log( "Marks below 40 found for subject" );
 
                 // Find related courses for this subject
-                const relatedCourses = await Course.find( {
-                    subId: subjectId,
-                    school: school
-                } ).lean();
-
-                if ( !relatedCourses || relatedCourses.length === 0 ) {
-                    console.log( "No courses found for subject:", subjectId );
-                }
-                // Add courses to display list (avoid duplicates)
-                for ( const course of relatedCourses ) {
-                    if ( !coursesToDisplay.some( c => c._id.equals( course._id ) ) ) {
-                        coursesToDisplay.push( {
-                            courseId: course._id,
-                            courseTitle: course.coursetitle,
-                            courseDetails: course.coursedetails,
-                            subjectName: subject.subName
-                        } );
-                    }
-                }
+                const subject = await Subject.findById( result.subName._id );
+                const course = await Course.findOne( { subId: subject._id } );
+                coursesToDisplay.push( course );
             }
         }
 

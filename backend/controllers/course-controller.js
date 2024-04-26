@@ -1,5 +1,6 @@
 const Course = require( '../models/courseSchema.js' );
 const Student = require( '../models/studentSchema.js' );
+const Subject = require( '../models/subjectSchema.js' );
 
 const courseCreate = async ( req, res ) => {
     try {
@@ -10,6 +11,8 @@ const courseCreate = async ( req, res ) => {
         res.status( 400 ).send( error );
     }
 };
+
+
 
 const getallCourse = async ( req, res ) => {
     try {
