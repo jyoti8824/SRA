@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSubjectList } from "../../redux/sclassRelated/sclassHandle";
+import { getSubjectList } from "../../redux/sclassRelated/sclassHandle"
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -13,12 +13,13 @@ import {
 } from "@mui/material";
 import { getUserDetails } from "../../redux/userRelated/userHandle";
 import CustomBarChart from "../../components/CustomBarChart";
-
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import InsertChartOutlinedIcon from "@mui/icons-material/InsertChartOutlined";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import TableChartOutlinedIcon from "@mui/icons-material/TableChartOutlined";
 import { StyledTableCell, StyledTableRow } from "../../components/styles";
+import StudentContext from "./StudentContext";
+
+
+
 
 const StudentSubjects = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,8 @@ const StudentSubjects = () => {
   );
   const [ maximumMarks, setMaximumMarks ] = useState( 0 );
   const [ totalMarksObtained, setTotalMarksObtained ] = useState( 0 );
+  const [ studentPercentage, setStudentPercentage ] = useState( 0 );
+  const {studentScore, setStudentScore} = useContext(StudentContext)
 
   useEffect( () => {
     if ( userDetails.examResult ) {
@@ -41,11 +44,15 @@ const StudentSubjects = () => {
     const totalMarks = userDetails?.examResult?.reduce( ( acc, val ) => {
       return acc + val.marksObtained;
     }, 0 );
+
+    let percentage = ((totalMarks / maxMarks) * 100).toFixed(2);
     setTotalMarksObtained( totalMarks );
+    setStudentPercentage( percentage)
+    setStudentScore(percentage)
   }, [ userDetails.examResult ] );
+  
 
-  console.log( maximumMarks );
-
+ 
   useEffect( () => {
     dispatch( getUserDetails( currentUser._id, "Student" ) );
   }, [ dispatch, currentUser._id ] );
@@ -104,7 +111,7 @@ const StudentSubjects = () => {
             } ) }
             <StyledTableRow>
               <StyledTableCell>Percentage</StyledTableCell>
-              <StyledTableCell>{ ( ( totalMarksObtained / maximumMarks ) * 100 ).toFixed( 2 ) }%</StyledTableCell>
+              <StyledTableCell>{studentPercentage }%</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>
