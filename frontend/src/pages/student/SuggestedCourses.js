@@ -3,15 +3,36 @@ import { Container, Grid, Paper } from "@mui/material";
 import styled from "styled-components";
 import CountUp from "react-countup";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import axios from "axios";
+import StudentContext from "./StudentContext";
+
+
 
 function SuggestedCourses() {
   const dispatch = useDispatch();
   const [getcourses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { currentUser } = useSelector((state) => state.user);
+  const [filteredCourses, setFilteredCourses] = useState(null);
+  const { currentUser } = useSelector((state) => state.user)
   const adminID = currentUser._id;
+  const {studentScore} = useContext(StudentContext)
+  console.log(getcourses)
+  const trimFilteredCourses = (courses) => {
+    return courses.slice(0, 10); // Trim the array to maximum 4 elements
+  };
+
+
+  useEffect(() => {
+    if (studentScore !== 0) {
+      const filteredCoursesList = getcourses.filter(
+        (course) => course.percentage <= studentScore && studentScore -10 <= course.percentage
+      );
+      setFilteredCourses((prevCourses) => (filteredCoursesList));
+      console.log(filteredCourses)
+    }
+
+  }, [studentScore, getcourses]);
 
   useEffect(() => {
 
@@ -27,12 +48,12 @@ function SuggestedCourses() {
       }
     };
     fetchData();
+
   }, [adminID, dispatch]);
 
-  console.log(getcourses)
 
   return (
-    <div> 
+    <Container> 
       <h3
         style={{
           fontSize: "25px",
@@ -48,7 +69,7 @@ function SuggestedCourses() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          getcourses.map((course) => (
+          filteredCourses?.map((course) => (
             <Grid
               key={course._id}
               sx={{ pt: 2 }}
@@ -69,11 +90,11 @@ function SuggestedCourses() {
           ))
         )}
       </Grid>
-    </div>
+    </Container>
   );
 }
 
-const StyledPaper = styled(Paper)`
+const StyledPaper = styled( Paper )`
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -87,8 +108,8 @@ const Title = styled.p`
   font-size: 1.25rem;
 `;
 
-const Data = styled(CountUp)`
-  font-size: calc(1.3rem + 0.6vw);
+const Data = styled( CountUp )`
+  font-size: calc(1.3rem + .6vw);
   color: green;
 `;
 
