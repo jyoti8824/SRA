@@ -13,7 +13,7 @@ const Homepage = () => {
   return (
     <>
       <Navbar />
-      <HeroBanner/>
+      <HeroBanner />
       <About />
       <Footer />
     </>
