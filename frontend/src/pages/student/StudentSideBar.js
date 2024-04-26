@@ -50,7 +50,7 @@ const StudentSideBar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Attendance" />
                 </ListItemButton>
-                <ListItemButton component={ Link } to="/Student/complain">
+                {/* <ListItemButton component={ Link } to="/Student/complain">
                     <ListItemIcon>
                         <AnnouncementOutlinedIcon sx={ {
                             color:
@@ -61,14 +61,14 @@ const StudentSideBar = () => {
                         } } />
                     </ListItemIcon>
                     <ListItemText primary="Complain" />
-                </ListItemButton>
+                </ListItemButton> */}
             </React.Fragment>
             <Divider sx={ { my: 1 } } />
             <React.Fragment>
                 <ListSubheader component="div" inset>
                     User
                 </ListSubheader>
-                <ListItemButton component={ Link } to="/Student/profile">
+                {/* <ListItemButton component={ Link } to="/Student/profile">
                     <ListItemIcon>
                         <AccountCircleOutlinedIcon sx={ {
                             color:
@@ -79,7 +79,7 @@ const StudentSideBar = () => {
                         } } />
                     </ListItemIcon>
                     <ListItemText primary="Profile" />
-                </ListItemButton>
+                </ListItemButton> */}
                 <ListItemButton component={ Link } to="/logout">
                     <ListItemIcon>
                         <ExitToAppIcon sx={ {

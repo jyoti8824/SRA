@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require( 'mongoose' );
 
-const studentSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema( {
     name: {
         type: String,
         required: true
@@ -36,17 +36,21 @@ const studentSchema = new mongoose.Schema({
             marksObtained: {
                 type: Number,
                 default: 0
-            }
+            },
+            subId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'subject'
+            },
         }
     ],
-    attendance: [{
+    attendance: [ {
         date: {
             type: Date,
             required: true
         },
         status: {
             type: String,
-            enum: ['Present', 'Absent'],
+            enum: [ 'Present', 'Absent' ],
             required: true
         },
         subName: {
@@ -54,7 +58,7 @@ const studentSchema = new mongoose.Schema({
             ref: 'subject',
             required: true
         }
-    }]
-});
+    } ]
+} );
 
-module.exports = mongoose.model("student", studentSchema);
+module.exports = mongoose.model( "student", studentSchema );

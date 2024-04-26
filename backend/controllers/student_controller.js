@@ -1,6 +1,105 @@
 const bcrypt = require( 'bcrypt' );
-const Student = require( '../models/studentSchema.js' );
 const Subject = require( '../models/subjectSchema.js' );
+const Teacher = require( '../models/teacherSchema.js' );
+const Student = require( '../models/studentSchema.js' );
+const Course = require( '../models/courseSchema.js' );
+
+
+// const getCourseAccordingMarks = async ( req, res ) => {
+//     try {
+//         const studentId = req.params.studentId;
+//         const student = await Student.findById( studentId ).select( 'examResult' ).lean();
+
+//         if ( !student ) {
+//             return res.status( 404 ).json( { message: "Student not found" } );
+//         }
+
+//         const coursesToDisplay = [];
+//         const { examResult } = student;
+//         // Iterate through each exam result
+//         for ( const result of examResult ) {
+//             const subject = result.subName;
+//             console.log( 'chekf subj here 😀😀😀', result );
+
+
+//             // Check if marks obtained are below 40 for this subject
+//             if ( result.marksObtained < 40 ) {
+//                 console.log( "less than 40 marks subject is found" );
+//                 const relatedCourses = await Course.find( {
+//                     subId: subjectId, school: student.school,
+//                 } ).lean().exec();
+//                 console.log( "yeh related course hai", relatedCourses );
+//                 for ( const course of relatedCourses ) {
+//                     if ( !coursesToDisplay.some( c => c._id.equals( course._id ) ) ) {
+//                         coursesToDisplay.push( course );
+//                     }
+//                 }
+//             }
+//         }
+//         console.log( "yeh related course hai", relatedCourses );
+//         console.log( "yeh related course dikhana hai", coursesToDisplay );
+//         res.json( coursesToDisplay );
+
+
+
+//     }
+//     catch ( error ) {
+//         res.status( 500 ).json( error );
+
+//     }
+// };
+
+const getCourseAccordingMarks = async ( req, res ) => {
+    try {
+        const studentId = req.params.studentId;
+        const student = await Student.findById( studentId ).select( 'examResult school' ).lean();
+
+        if ( !student ) {
+            return res.status( 404 ).json( { message: "Student not found" } );
+        }
+
+        const coursesToDisplay = [];
+        const { examResult, school } = student;
+
+        // Iterate through each exam result
+        for ( const result of examResult ) {
+            const subjectId = result.subName; // Assuming `subName` holds the subject ID
+
+            // Check if marks obtained are below 40 for this subject
+            if ( result.marksObtained < 40 ) {
+                console.log( "Marks below 40 found for subject" );
+
+                // Find related courses for this subject
+                const relatedCourses = await Course.find( {
+                    subId: subjectId,
+                    school: school
+                } ).lean();
+
+                if ( !relatedCourses || relatedCourses.length === 0 ) {
+                    console.log( "No courses found for subject:", subjectId );
+                }
+                // Add courses to display list (avoid duplicates)
+                for ( const course of relatedCourses ) {
+                    if ( !coursesToDisplay.some( c => c._id.equals( course._id ) ) ) {
+                        coursesToDisplay.push( {
+                            courseId: course._id,
+                            courseTitle: course.coursetitle,
+                            courseDetails: course.coursedetails,
+                            subjectName: subject.subName
+                        } );
+                    }
+                }
+            }
+        }
+
+        console.log( "Courses to display:", coursesToDisplay );
+        res.json( coursesToDisplay );
+    } catch ( error ) {
+        console.error( "Error fetching courses:", error );
+        res.status( 500 ).json( { message: "Internal server error" } );
+    }
+};
+
 
 const studentRegister = async ( req, res ) => {
     try {
@@ -144,7 +243,7 @@ const updateStudent = async ( req, res ) => {
 };
 
 const updateExamResult = async ( req, res ) => {
-    const { subName, marksObtained } = req.body;
+    const { subName, marksObtained, subId } = req.body;
 
     try {
         const student = await Student.findById( req.params.id );
@@ -160,7 +259,7 @@ const updateExamResult = async ( req, res ) => {
         if ( existingResult ) {
             existingResult.marksObtained = marksObtained;
         } else {
-            student.examResult.push( { subName, marksObtained } );
+            student.examResult.push( { subName, marksObtained, subId } );
         }
 
         const result = await student.save();
@@ -287,4 +386,5 @@ module.exports = {
     clearAllStudentsAttendance,
     removeStudentAttendanceBySubject,
     removeStudentAttendance,
+    getCourseAccordingMarks
 };

@@ -23,123 +23,137 @@ const SideBar = () => {
   return (
     <>
       <React.Fragment>
-        <ListItemButton component={Link} to='/'>
+        <ListItemButton component={ Link } to='/'>
           <ListItemIcon>
             <HomeIcon
-              sx={{
+              sx={ {
                 color:
                   location.pathname === "/" ||
-                  location.pathname === "/Admin/dashboard"
+                    location.pathname === "/Admin/dashboard"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Home' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Admin/classes'>
+        <ListItemButton component={ Link } to='/Admin/classes'>
           <ListItemIcon>
             <ClassOutlinedIcon
-            sx={{
+              sx={ {
                 color:
                   location.pathname === "/classes" ||
-                  location.pathname === "/Admin/classes"
+                    location.pathname === "/Admin/classes"
                     ? "#cfa406"
                     : "inherit",
-              }}
-       
+              } }
+
             />
           </ListItemIcon>
           <ListItemText primary='Classes' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Admin/subjects'>
+        <ListItemButton component={ Link } to='/Admin/subjects'>
           <ListItemIcon>
             <AssignmentIcon
-             sx={{
+              sx={ {
                 color:
                   location.pathname === "/subjects" ||
-                  location.pathname === "/Admin/subjects"
+                    location.pathname === "/Admin/subjects"
                     ? "#cfa406"
                     : "inherit",
-              }}
-         
+              } }
+
             />
           </ListItemIcon>
           <ListItemText primary='Subjects' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Admin/teachers'>
+        <ListItemButton component={ Link } to='/Admin/teachers'>
           <ListItemIcon>
             <SupervisorAccountOutlinedIcon
-             sx={{
+              sx={ {
                 color:
                   location.pathname === "/teachers" ||
-                  location.pathname === "/Admin/teachers"
+                    location.pathname === "/Admin/teachers"
                     ? "#cfa406"
                     : "inherit",
-              }}
-          
+              } }
+
             />
           </ListItemIcon>
           <ListItemText primary='Teachers' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Admin/students'>
+        <ListItemButton component={ Link } to='/Admin/students'>
           <ListItemIcon>
             <PersonOutlineIcon
-       sx={{
-        color:
-          location.pathname === "/students" ||
-          location.pathname === "/Admin/students"
-            ? "#cfa406"
-            : "inherit",
-      }}
+              sx={ {
+                color:
+                  location.pathname === "/students" ||
+                    location.pathname === "/Admin/students"
+                    ? "#cfa406"
+                    : "inherit",
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Students' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Admin/notices'>
+        <ListItemButton component={ Link } to='/Admin/notices'>
           <ListItemIcon>
             <AnnouncementOutlinedIcon
-         sx={{
-            color:
-              location.pathname === "/notices" ||
-              location.pathname === "/Admin/notices"
-                ? "#cfa406"
-                : "inherit",
-          }}
+              sx={ {
+                color:
+                  location.pathname === "/notices" ||
+                    location.pathname === "/Admin/notices"
+                    ? "#cfa406"
+                    : "inherit",
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Notices' />
         </ListItemButton>
+        <ListItemButton component={ Link } to='/Admin/addcourse'>
+          <ListItemIcon>
+            <AnnouncementOutlinedIcon
+              sx={ {
+                color:
+                  location.pathname === "/course" ||
+                    location.pathname === "/Admin/addcourse"
+                    ? "#cfa406"
+                    : "inherit",
+              } }
+            />
+          </ListItemIcon>
+          <ListItemText primary='Add Course' />
+        </ListItemButton>
       </React.Fragment>
-      <Divider sx={{ my: 1 }} />
+      <Divider sx={ { my: 1 } } />
       <React.Fragment>
         <ListSubheader component='div' inset>
           User
         </ListSubheader>
-        <ListItemButton component={Link} to='/Admin/profile'>
+        <ListItemButton component={ Link } to='/Admin/profile'>
           <ListItemIcon>
             <AccountCircleOutlinedIcon
-             sx={{
+              sx={ {
                 color:
                   location.pathname === "/profile" ||
-                  location.pathname === "/Admin/profile"
+                    location.pathname === "/Admin/profile"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Profile' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/logout'>
+        <ListItemButton component={ Link } to='/logout'>
           <ListItemIcon>
             <ExitToAppIcon
-              sx={{
+              sx={ {
                 color:
                   location.pathname === "/logout" ||
-                  location.pathname === "/Admin/logout"
+                    location.pathname === "/Admin/logout"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Logout' />
