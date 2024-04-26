@@ -65,7 +65,7 @@ const AddCourse = () => {
                         required />
 
                     <label>Price</label>
-                    <input className="registerInput" type="number" placeholder="Enter course Price..."
+                    <input className="registerInput" type="text" placeholder="Enter course Price..."
                         value={ price }
                         onChange={ ( event ) => setPrice( event.target.value ) }
                         required />

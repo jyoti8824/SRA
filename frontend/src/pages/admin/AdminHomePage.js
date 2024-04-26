@@ -1,4 +1,4 @@
-import { Container, Grid, Paper } from '@mui/material';
+import { Container, Grid, Paper, Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 import SeeNotice from '../../components/SeeNotice';
 import Students from "../../assets/img1.png";
 import Classes from "../../assets/img2.png";
@@ -12,6 +12,7 @@ import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
 import { getAllStudents } from '../../redux/studentRelated/studentHandle';
 import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
@@ -94,24 +95,40 @@ const AdminHomePage = () => {
                 </Grid>
                 <h3 style={ { fontSize: '25px', marginTop: '20px', marginBottom: '10px', textAlign: "center" } }> All Courses </h3>
 
-                <Grid container spacing={ 7 } pt={ 4 }>
-
-
+                <Card sx={ { maxWidth: 300, borderRadius: 8, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' } }>
                     { loading ? (
                         <p>Loading...</p>
                     ) : (
-                        getcourses.map( course => (
-                            <Grid key={ course._id } sx={ { pt: 2 } } spacing={ 2 } item xs={ 12 } md={ 3 } lg={ 3 }> {/* Grid item */ }
-                                <StyledPaper>
-                                    <Title >{ course.coursetitle }</Title>
-                                    <p>{ course.coursedetails }</p>
-                                    <Data end={ course.price } duration={ 2.5 }></Data>
-                                </StyledPaper>
-                            </Grid>
+                        getcourses?.map( ( course ) => (
+                            <div>
+                                <CardMedia
+                                    key={ course._id }
+                                    component="img"
+                                    height="200"
+                                    image={ course.courseImageLink }
+                                    alt="Course Image"
+                                    sx={ { objectFit: 'cover' } }
+                                />
+                                <CardContent>
+                                    <Typography variant="h5" component="div" sx={ { marginBottom: 2 } }>
+                                        { course.coursetitle }
+                                    </Typography>
+                                    <Typography variant="body1" color="text.secondary" sx={ { marginBottom: 2 } }>
+                                        { course.coursedetails }
+                                    </Typography>
+                                    <div style={ { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } }>
+                                        <Typography variant="h6" component="div" sx={ { color: '#007BFF' } }>
+                                            { course.price }
+                                        </Typography>
+                                        <Button variant="contained" sx={ { backgroundColor: '#007BFF', color: '#fff' } }>
+                                            <Link to={ course.courselink }>Get Course</Link>
+                                        </Button>
+                                    </div>
+                                </CardContent>
+                            </div>
                         ) )
                     ) }
-
-                </Grid>
+                </Card>
             </Container>
         </>
     );
