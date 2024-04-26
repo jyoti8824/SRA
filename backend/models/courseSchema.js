@@ -16,10 +16,7 @@ const courseSchema = new mongoose.Schema( {
         type: Number,
         required: true
     },
-    subId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'subject'
-    },
+
     school: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'admin'

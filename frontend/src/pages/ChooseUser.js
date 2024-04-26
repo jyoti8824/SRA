@@ -14,127 +14,126 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
 
-const ChooseUser = ({ visitor }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const password = "zxc"
+const ChooseUser = ( { visitor } ) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const password = "zxc";
 
-  const { status, currentUser, currentRole } = useSelector(state => state.user);;
+  const { status, currentUser, currentRole } = useSelector( state => state.user );;
 
-  const [loader, setLoader] = useState(false)
-  const [showPopup, setShowPopup] = useState(false);
-  const [message, setMessage] = useState("");
+  const [ loader, setLoader ] = useState( false );
+  const [ showPopup, setShowPopup ] = useState( false );
+  const [ message, setMessage ] = useState( "" );
 
-  const navigateHandler = (user) => {
-    if (user === "Admin") {
-      if (visitor === "guest") {
-        const email = "yogendra@12"
-        const fields = { email, password }
-        setLoader(true)
-        dispatch(loginUser(fields, user))
+  const navigateHandler = ( user ) => {
+    if ( user === "Admin" ) {
+      if ( visitor === "guest" ) {
+        const email = "yogendra@12";
+        const fields = { email, password };
+        setLoader( true );
+        dispatch( loginUser( fields, user ) );
       }
       else {
-        navigate('/Adminlogin');
+        navigate( '/Adminlogin' );
       }
     }
 
-    else if (user === "Student") {
-      if (visitor === "guest") {
-        const rollNum = "1"
-        const studentName = "Dipesh Awasthi"
-        const fields = { rollNum, studentName, password }
-        setLoader(true)
-        dispatch(loginUser(fields, user))
+    else if ( user === "Student" ) {
+      if ( visitor === "guest" ) {
+        const rollNum = "1";
+        const studentName = "Dipesh Awasthi";
+        const fields = { rollNum, studentName, password };
+        setLoader( true );
+        dispatch( loginUser( fields, user ) );
       }
       else {
-        navigate('/Studentlogin');
+        navigate( '/Studentlogin' );
       }
     }
 
-    else if (user === "Teacher") {
-      if (visitor === "guest") {
-        const email = "tony@12"
-        const fields = { email, password }
-        setLoader(true)
-        dispatch(loginUser(fields, user))
+    else if ( user === "Teacher" ) {
+      if ( visitor === "guest" ) {
+        const email = "tony@12";
+        const fields = { email, password };
+        setLoader( true );
+        dispatch( loginUser( fields, user ) );
       }
       else {
-        navigate('/Teacherlogin');
+        navigate( '/Teacherlogin' );
       }
     }
-  }
+  };
 
-  useEffect(() => {
-    if (status === 'success' || currentUser !== null) {
-      if (currentRole === 'Admin') {
-        navigate('/Admin/dashboard');
+  useEffect( () => {
+    if ( status === 'success' || currentUser !== null ) {
+      if ( currentRole === 'Admin' ) {
+        navigate( '/Admin/dashboard' );
       }
-      else if (currentRole === 'Student') {
-        navigate('/Student/dashboard');
-      } else if (currentRole === 'Teacher') {
-        navigate('/Teacher/dashboard');
+      else if ( currentRole === 'Student' ) {
+        navigate( '/Student/dashboard' );
+      } else if ( currentRole === 'Teacher' ) {
+        navigate( '/Teacher/dashboard' );
       }
     }
-    else if (status === 'error') {
-      setLoader(false)
-      setMessage("Network Error")
-      setShowPopup(true)
+    else if ( status === 'error' ) {
+      setLoader( false );
+      setMessage( "Network Error" );
+      setShowPopup( true );
     }
-  }, [status, currentRole, navigate, currentUser]);
+  }, [ status, currentRole, navigate, currentUser ] );
 
   return (
     <StyledContainer>
       <Container>
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <div onClick={() => navigateHandler("Admin")}>
-              <StyledPaper elevation={3}>
-                <Box mb={2}>
+        <div>
+          <Grid item xs={ 4 } sm={ 2 } md={ 4 }>
+            <div onClick={ () => navigateHandler( "Admin" ) }>
+              <StyledPaper elevation={ 3 }>
+                <Box mb={ 2 }>
                   <AccountCircle fontSize="large" />
                 </Box>
                 <StyledTypography>
-                  Admin
+                  Login as Admin
                 </StyledTypography>
-                Login as an administrator to access the dashboard to manage app data.
               </StyledPaper>
             </div>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-              <div onClick={() => navigateHandler("Student")}>
-                <Box mb={2}>
+          <br />
+          <Grid item xs={ 12 } sm={ 6 } md={ 4 }>
+            <StyledPaper elevation={ 3 }>
+              <div onClick={ () => navigateHandler( "Student" ) }>
+                <Box mb={ 2 }>
                   <School fontSize="large" />
                 </Box>
                 <StyledTypography>
-                  Student
+                  Login as Student
                 </StyledTypography>
-                Login as a student to explore course materials and assignments.
               </div>
             </StyledPaper>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-              <div onClick={() => navigateHandler("Teacher")}>
-                <Box mb={2}>
+          <br />
+          <Grid item xs={ 12 } sm={ 6 } md={ 4 }>
+            <StyledPaper elevation={ 3 }>
+              <div onClick={ () => navigateHandler( "Teacher" ) }>
+                <Box mb={ 2 }>
                   <Group fontSize="large" />
                 </Box>
                 <StyledTypography>
-                  Teacher
+                  Login as Teacher
                 </StyledTypography>
-                Login as a teacher to create courses, assignments, and track student progress.
               </div>
             </StyledPaper>
           </Grid>
-        </Grid>
+        </div>
       </Container>
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={loader}
+        sx={ { color: '#fff', zIndex: ( theme ) => theme.zIndex.drawer + 4 } }
+        open={ loader }
       >
         <CircularProgress color="inherit" />
         Please Wait
       </Backdrop>
-      <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
+      <Popup message={ message } setShowPopup={ setShowPopup } showPopup={ showPopup } />
     </StyledContainer>
   );
 };
@@ -149,7 +148,7 @@ background: #1a325d;
   padding: 2rem;
 `;
 
-const StyledPaper = styled(Paper)`
+const StyledPaper = styled( Paper )`
   padding: 20px;
   text-align: center;
   background-color: #1f1f38;

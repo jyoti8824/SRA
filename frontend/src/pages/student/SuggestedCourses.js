@@ -26,7 +26,7 @@ function SuggestedCourses() {
   useEffect(() => {
     if (studentScore !== 0) {
       const filteredCoursesList = getcourses.filter(
-        (course) => course.percentage <= studentScore && studentScore -10 <= course.percentage
+        (course) => course.percentage <= studentScore && course.percentage >= studentScore - 10
       );
       setFilteredCourses((prevCourses) => (filteredCoursesList));
       console.log(filteredCourses)
