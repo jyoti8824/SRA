@@ -17,6 +17,7 @@ import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
 import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined";
 import ReportIcon from "@mui/icons-material/Report";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import AddIcon from '@mui/icons-material/Add';
 
 const SideBar = () => {
   const location = useLocation();
@@ -112,7 +113,7 @@ const SideBar = () => {
         </ListItemButton>
         <ListItemButton component={ Link } to='/Admin/addcourse'>
           <ListItemIcon>
-            <AnnouncementOutlinedIcon
+            <AddIcon
               sx={ {
                 color:
                   location.pathname === "/course" ||
