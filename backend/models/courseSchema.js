@@ -16,6 +16,14 @@ const courseSchema = new mongoose.Schema( {
         type: Number,
         required: true
     },
+    courselink: {
+        type: String,
+        required: true
+    },
+    courseImageLink: {
+        type: String,
+        required: true
+    },
 
     school: {
         type: mongoose.Schema.Types.ObjectId,

@@ -10,6 +10,9 @@ const AddCourse = () => {
     const [ coursetitle, setCourseTitle ] = useState( '' );
     const [ coursedetails, setCourseDetails ] = useState( '' );
     const [ price, setPrice ] = useState( '' );
+    const [ courseImageLink, setCourseimagelink ] = useState( '' );
+    const [ courselink, setCourselink ] = useState( '' );
+
     const [ percentage, setPercentage ] = useState( '' );
     const [ loader, setLoader ] = useState( false );
     const [ showPopup, setShowPopup ] = useState( false );
@@ -24,7 +27,9 @@ const AddCourse = () => {
                 coursetitle,
                 coursedetails,
                 price,
-                percentage
+                percentage,
+                courseImageLink,
+                courselink
             } );
 
             if ( response.status === 200 ) {
@@ -68,6 +73,20 @@ const AddCourse = () => {
                     <input className="registerInput" type="number" placeholder="Enter Percentage..."
                         value={ percentage }
                         onChange={ ( event ) => setPercentage( event.target.value ) }
+                        required />
+
+                    <label>Course Image Link</label>
+                    <input className="registerInput" type="text" placeholder="Enter Course Image link ..."
+                        value={ courseImageLink }
+                        onChange={ ( event ) => setCourseimagelink( event.target.value ) }
+                        required />
+
+
+
+                    <label>Course Link</label>
+                    <input className="registerInput" type="text" placeholder="Enter Course Link..."
+                        value={ courselink }
+                        onChange={ ( event ) => setCourselink( event.target.value ) }
                         required />
 
                     <button className="registerButton" type="submit" disabled={ loader }>
