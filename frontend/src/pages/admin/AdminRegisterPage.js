@@ -76,16 +76,20 @@ const AdminRegisterPage = () => {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Grid  component="main" sx={{ height: '100vh' }}>
+            <Grid component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid item xs={12} sm={8} md={5}  elevation={6} square>
                     <Box
                         sx={{
-                            my: 8,
-                            mx: 4,
+                            my: 10,
+                            mx: "auto",
                             display: 'flex',
                             flexDirection: 'column',
+                            p: 4,
+                            width: '90%',
+                            maxWidth: '800px',
                             alignItems: 'center',
+                            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
                         }}
                     >
                         <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
