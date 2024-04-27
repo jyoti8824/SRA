@@ -67,40 +67,69 @@ function SuggestedCourses() {
       </h3>
 
 
-      <Card sx={ { maxWidth: 300, borderRadius: 8, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' } }>
-        { loading ? (
-          <p>Loading...</p>
-        ) : (
-          filteredCourses?.map( ( course ) => (
-            <div>
-              <CardMedia
-                key={ course._id }
-                component="img"
-                height="200"
-                image={ course.courseImageLink }
-                alt="Course Image"
-                sx={ { objectFit: 'cover' } }
-              />
-              <CardContent>
-                <Typography variant="h5" component="div" sx={ { marginBottom: 2 } }>
-                  { course.coursetitle }
-                </Typography>
-                <Typography variant="body1" color="text.secondary" sx={ { marginBottom: 2 } }>
-                  { course.coursedetails }
-                </Typography>
-                <div style={ { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } }>
-                  <Typography variant="h6" component="div" sx={ { color: '#007BFF' } }>
-                    { course.price }
-                  </Typography>
-                  <Button variant="contained" sx={ { backgroundColor: '#007BFF', color: '#fff' } }>
-                    <Link to={ course.courselink }>Get Course</Link>
-                  </Button>
+      <div
+          className='card-wrapper'
+          style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "space-evenly" }}
+        >
+          {loading ? (
+            <p>Loading....</p>
+          ) : (
+            filteredCourses.map((course) => {
+              return (
+                <div
+                  className='card'
+                  style={{ maxWidth: "250px", width: "95%",  borderRadius: 8, boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: "#fff", borderRadius: "15px" }}
+                >
+                  <CardMedia
+                    key={course._id}
+                    component='img'
+                    height='160'
+                    image={course.courseImageLink}
+                    alt='Course Image'
+                    sx={{ objectFit: "cover", borderRadius: "8px 8px 0 0",}}
+                  />
+                  <CardContent>
+                    <Typography
+                      variant='h5'
+                      component='div'
+                      sx={{ marginBottom: 2 }}
+                    >
+                      {course.coursetitle}
+                    </Typography>
+                    <Typography
+                      variant='body1'
+                      color='text.secondary'
+                      sx={{ marginBottom: 2 }}
+                    >
+                      {course.coursedetails}
+                    </Typography>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Typography
+                        variant='h6'
+                        component='div'
+                        sx={{ color: "#007BFF" }}
+                      >
+                        {course.price}
+                      </Typography>
+                      <Button
+                        variant='contained'
+                        sx={{ backgroundColor: "#007BFF", color: "#fff" }}
+                      >
+                        <Link to={course.courselink} target="_blank">Get Course</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
                 </div>
-              </CardContent>
-            </div>
-          ) )
-        ) }
-      </Card>
+              );
+            })
+          )}
+        </div>
     </Container>
   );
 }
