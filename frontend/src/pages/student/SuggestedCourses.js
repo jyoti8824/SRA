@@ -19,9 +19,9 @@ function SuggestedCourses() {
   const adminID = currentUser._id;
   const { studentScore } = useContext( StudentContext );
   console.log( getcourses );
-  const trimFilteredCourses = ( courses ) => {
-    return courses.slice( 0, 10 ); // Trim the array to maximum 4 elements
-  };
+  // const trimFilteredCourses = ( courses ) => {
+  //   return courses.slice( 0, 10 ); // Trim the array to maximum 4 elements
+  // };
 
 
   useEffect( () => {
