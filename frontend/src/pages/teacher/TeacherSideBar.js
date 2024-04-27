@@ -16,42 +16,42 @@ import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
 import { useSelector } from "react-redux";
 
 const TeacherSideBar = () => {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector( ( state ) => state.user );
   const sclassName = currentUser.teachSclass;
 
   const location = useLocation();
   return (
     <>
       <React.Fragment>
-        <ListItemButton component={Link} to='/'>
+        <ListItemButton component={ Link } to='/'>
           <ListItemIcon>
             <HomeIcon
-              sx={{
+              sx={ {
                 color:
                   location.pathname === "/" ||
-                  location.pathname === "/Teacher/dashbaord"
+                    location.pathname === "/Teacher/dashbaord"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Home' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Teacher/class'>
+        <ListItemButton component={ Link } to='/Teacher/class'>
           <ListItemIcon>
             <ClassOutlinedIcon
-              sx={{
+              sx={ {
                 color:
                   location.pathname === "/class" ||
-                  location.pathname === "/Teacher/class"
+                    location.pathname === "/Teacher/class"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
-          <ListItemText primary={`Class ${sclassName.sclassName}`} />
+          <ListItemText primary={ `Class ${sclassName.sclassName}` } />
         </ListItemButton>
-        <ListItemButton component={Link} to='/Teacher/complain'>
+        {/* <ListItemButton component={Link} to='/Teacher/complain'>
           <ListItemIcon>
             <AnnouncementOutlinedIcon
               sx={{
@@ -64,37 +64,37 @@ const TeacherSideBar = () => {
             />
           </ListItemIcon>
           <ListItemText primary='Complain' />
-        </ListItemButton>
+        </ListItemButton> */}
       </React.Fragment>
-      <Divider sx={{ my: 1 }} />
+      <Divider sx={ { my: 1 } } />
       <React.Fragment>
         <ListSubheader component='div' inset>
           User
         </ListSubheader>
-        <ListItemButton component={Link} to='/Teacher/profile'>
+        <ListItemButton component={ Link } to='/Teacher/profile'>
           <ListItemIcon>
             <AccountCircleOutlinedIcon
-              sx={{
+              sx={ {
                 color:
                   location.pathname === "/profile" ||
-                  location.pathname === "/Teacher/profile"
+                    location.pathname === "/Teacher/profile"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Profile' />
         </ListItemButton>
-        <ListItemButton component={Link} to='/logout'>
+        <ListItemButton component={ Link } to='/logout'>
           <ListItemIcon>
             <ExitToAppIcon
-              sx={{
+              sx={ {
                 color:
                   location.pathname === "/logout" ||
-                  location.pathname === "/Teacher/logout"
+                    location.pathname === "/Teacher/logout"
                     ? "#cfa406"
                     : "inherit",
-              }}
+              } }
             />
           </ListItemIcon>
           <ListItemText primary='Logout' />
