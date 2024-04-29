@@ -39,19 +39,19 @@ router.get( "/Admin/:id", getAdminDetail );
 
 // Student
 
-router.post( '/StudentReg', studentRegister );
+router.post( '/StudentReg', studentRegister ); // to save data
 router.post( '/StudentLogin', studentLogIn );
 
-router.get( "/Students/:id", getStudents );
+router.get( "/Students/:id", getStudents ); // to fetch data 
 router.get( "/Student/:id", getStudentDetail );
 
-router.delete( "/Students/:id", deleteStudents );
+router.delete( "/Students/:id", deleteStudents ); // delete api
 router.delete( "/StudentsClass/:id", deleteStudentsByClass );
 router.delete( "/Student/:id", deleteStudent );
 
 router.get( "/Coursesmark/:studentId", getCourseAccordingMarks );
 
-router.put( "/Student/:id", updateStudent );
+router.put( "/Student/:id", updateStudent ); // to update data
 
 router.put( '/UpdateExamResult/:id', updateExamResult );
 

@@ -2,6 +2,7 @@ const Course = require( '../models/courseSchema.js' );
 const Student = require( '../models/studentSchema.js' );
 const Subject = require( '../models/subjectSchema.js' );
 
+//course create api logic
 const courseCreate = async ( req, res ) => {
     try {
         const course = new Course( req.body );
@@ -24,6 +25,7 @@ const getallCourse = async ( req, res ) => {
         res.status( 500 ).json( { message: 'Internal Server Error' } );
     }
 };
+
 
 
 const getCourse = async ( req, res ) => {
