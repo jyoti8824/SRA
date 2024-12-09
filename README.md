@@ -38,7 +38,7 @@ The Student Report Advisor is a web-based application built using the MERN (Mong
 # Installation
 
 ```sh
-git clone https://github.com/Yogndrr/MERN-School-Management-System.git
+
 ```
 
 Open 2 terminals in separate windows/tabs.
